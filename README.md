@@ -13,16 +13,17 @@ The framework **Optuna** is utilized for automated hyperparameter optimization, 
 
 ### 1. Clone Repository
 Clone the project to your local machine:
+```bash
 git clone https://github.com/your-username/fraud-detection-project.git
-cd fraud-detection-project
-
+```
 ### 2. Install Dependencies
 Ensure you have Python 3.8+ installed. Install the required libraries using the requirements file:
+```bash
 pip install -r requirements.txt
-
+```
 ### 3. Data Preparation
 1. Download the dataset `creditcard.csv` from Kaggle: [Credit Card Fraud Detection](https://www.kaggle.com/datasets/whenamancodes/fraud-detection).
-2. Place the `creditcard.csv` (or `creditcard.csv.zip`) file in the root directory of the project.
+2. Place the `creditcard.csv`file in the root directory of the project.
 
 ### 4. Running the Project
 The project is implemented as a Jupyter Notebook. Open and run the notebook:
@@ -53,8 +54,8 @@ The models were evaluated based on AUPRC, which is robust to class imbalance.
 
 | Model | AUPRC | Analysis |
 | :--- | :--- | :--- |
-| **Advanced MLP** | **0.769** | Demonstrated superior performance by leveraging labeled data. Achieved high recall while maintaining good precision. |
-| **Autoencoder** | 0.208 | Effectively functioned as an anomaly filter but yielded a higher False Positive rate compared to the supervised approach. |
+| **Advanced MLP** | **0.7449** | Demonstrated superior performance by leveraging labeled data. Achieved high recall while maintaining good precision. |
+| **Autoencoder** | **0.1689** | Effectively functioned as an anomaly filter but yielded a higher False Positive rate compared to the supervised approach. |
 
 ### Visualization
 The project output includes:
@@ -71,3 +72,4 @@ The project output includes:
 ## Authors
 - Nurbek Seilbek
 - Danial Yermekov
+
