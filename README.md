@@ -41,21 +41,32 @@ The dataset contains transactions made by credit cards in September 2013 by Euro
 ## Methodology
 
 ### Supervised MLP (Multi-Layer Perceptron)
-- **Architecture:** A dynamic deep network (2-4 layers) featuring Batch Normalization, LeakyReLU activation, and Dropout for regularization.
+- **Architecture:** A dynamic deep network (2–4 layers) featuring Batch Normalization, LeakyReLU activation, and Dropout for regularization.
 - **Training Strategy:** Utilizes Class Weighting in the loss function to heavily penalize missing fraud cases (False Negatives).
+
+### Gradient Boosting with XGBoost
+- **Architecture:** Tree-based gradient boosting model that builds an ensemble of decision trees, each correcting the residual errors of the previous ones.
+- **Optimization:** Hyperparameters such as max_depth, learning_rate, n_estimators, subsample, colsample_bytree, gamma, and scale_pos_weight are tuned with Optuna to maximize AUPRC on the validation set under heavy class imbalance.
+
+### Gradient Boosting with LightGBM
+- **Architecture:** Histogram-based gradient boosting decision tree model optimized for speed and memory efficiency, using leaf-wise growth with depth constraints.
+- **Optimization:** Optuna searches over num_leaves, max_depth, min_child_samples, subsample, colsample_bytree, regularization parameters, learning_rate, n_estimators, and scale_pos_weight to achieve the best precision–recall trade-off on the fraud class.
 
 ### Unsupervised Autoencoder
 - **Concept:** The model learns a compressed representation of normal transactions. During inference, transactions with a reconstruction error exceeding a dynamically calculated threshold are flagged as fraud.
-- **Optimization:** Optuna tunes the bottleneck size (latent space dimension) and selects the optimal reconstruction loss function (L1 vs. MSE vs. BCE).
+- **Optimization:** Optuna tunes the bottleneck size (latent space dimension) and selects the optimal reconstruction loss function (L1 vs. MSE vs. BCE), while early stopping and learning rate scheduling are used to prevent overfitting on normal data.
+
 
 ## Experimental Results
 
 The models were evaluated based on AUPRC, which is robust to class imbalance.
 
-| Model | AUPRC | Analysis |
-| :--- | :--- | :--- |
-| **Advanced MLP** | **0.7449** | Demonstrated superior performance by leveraging labeled data. Achieved high recall while maintaining good precision. |
-| **Autoencoder** | **0.1689** | Effectively functioned as an anomaly filter but yielded a higher False Positive rate compared to the supervised approach. |
+| Model           | AUPRC | Analysis |
+| :--------------| :-----| :--------|
+| **Advanced MLP** | **0.769** | Demonstrated superior performance by leveraging labeled data. Achieved high recall while maintaining good precision. |
+| **XGBoost**      | **0.804** | Achieved the best overall ranking quality on the fraud class, providing the highest AUPRC and strong precision–recall balance on the test set. |
+| **LightGBM**     | **0.74** | Performed competitively with MLP, slightly below XGBoost in AUPRC, while maintaining stable precision and recall under severe class imbalance. |
+| **Autoencoder**  | 0.17| Effectively functioned as an anomaly filter but yielded a higher False Positive rate compared to the supervised approaches. |
 
 ### Visualization
 The project output includes:
@@ -72,4 +83,5 @@ The project output includes:
 ## Authors
 - Nurbek Seilbek
 - Danial Yermekov
+
 
