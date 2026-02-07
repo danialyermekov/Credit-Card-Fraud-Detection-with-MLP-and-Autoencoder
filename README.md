@@ -6,7 +6,7 @@ This project focuses on detecting fraudulent credit card transactions using deep
 The project conducts a comparative analysis of two distinct neural network architectures implemented in PyTorch:
 1. **Supervised Advanced MLP:** A deep feed-forward neural network trained with supervision, utilizing Weighted BCE Loss to handle class imbalance effectively.
 2. **Unsupervised Tuned Autoencoder:** An anomaly detection model trained exclusively on legitimate transactions. It identifies fraud by measuring the reconstruction error, assuming that fraudulent patterns will yield higher errors than normal ones.
-
+3. **Boosting Algorithms** Tree-based gradient boosting models that build an ensemble of decision trees.
 The framework **Optuna** is utilized for automated hyperparameter optimization, tuning critical parameters such as the number of layers, hidden units, learning rate, and bottleneck size.
 
 ## Installation and Usage
@@ -83,5 +83,6 @@ The project output includes:
 ## Authors
 - Nurbek Seilbek
 - Danial Yermekov
+
 
 
