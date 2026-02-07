@@ -63,9 +63,9 @@ The models were evaluated based on AUPRC, which is robust to class imbalance.
 
 | Model           | AUPRC | Analysis |
 | :--------------| :-----| :--------|
-| **Advanced MLP** | **0.769** | Demonstrated superior performance by leveraging labeled data. Achieved high recall while maintaining good precision. |
+| **Advanced MLP** | **0.744** | Demonstrated superior performance by leveraging labeled data. Achieved high recall while maintaining good precision. |
 | **XGBoost**      | **0.804** | Achieved the best overall ranking quality on the fraud class, providing the highest AUPRC and strong precision–recall balance on the test set. |
-| **LightGBM**     | **0.74** | Performed competitively with MLP, slightly below XGBoost in AUPRC, while maintaining stable precision and recall under severe class imbalance. |
+| **LightGBM**     | **0.77** | Performed competitively with MLP, slightly below XGBoost in AUPRC, while maintaining stable precision and recall under severe class imbalance. |
 | **Autoencoder**  | 0.17| Effectively functioned as an anomaly filter but yielded a higher False Positive rate compared to the supervised approaches. |
 
 ### Visualization
@@ -83,6 +83,7 @@ The project output includes:
 ## Authors
 - Nurbek Seilbek
 - Danial Yermekov
+
 
 
 
